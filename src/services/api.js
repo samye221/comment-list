@@ -10,10 +10,13 @@ export const getList = () => {
 		 }).catch(err => console.log(err))
 }
 
-// adds the original fetched list and the created comment to the localStorage. 
+// adds the original fetched list and the created comments to the localStorage. 
 export const addComment = async (comment) => {
 	const originalList = await getList();
-	return localStorage.setItem('newComment', JSON.stringify([...originalList, comment]));
+	const previousData = await JSON.parse(localStorage.getItem('newComment'));
+	console.log('previousData', previousData)
+	return previousData ? localStorage.setItem('newComment', JSON.stringify([...originalList, ...previousData, comment])) 
+		: localStorage.setItem('newComment', JSON.stringify([...originalList, comment])) ;
 } 
 
 // when called, returns the list from the localStorage instead of the original static list

@@ -18,6 +18,10 @@
     margin-left: 10px !important;
 }
 
+.textField {
+    height: 23vh;
+}
+
 .bottomButton {
     margin-top: 5% !important;
 }

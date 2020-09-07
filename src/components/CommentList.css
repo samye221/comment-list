@@ -6,6 +6,7 @@
 
 .message {
     padding: 15px;
+    width: 100%;
     background-color: ghostwhite;
     border: groove;
     border-width: 0.5px;

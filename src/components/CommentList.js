@@ -3,7 +3,6 @@ import {getList, updateList, deleteMessage} from '../services/api';
 import {withStyles, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -78,7 +77,7 @@ const MessageList = ({location, history}) => {
 
 	const toggleFilter = (filter) => {
 		setFilter(filter);
-		setIsUpdated(false);
+		// setIsUpdated(false);
 	}
 
 	const redirect = () => history.push({pathname: '/newComment'})
@@ -87,7 +86,8 @@ const MessageList = ({location, history}) => {
 	const handleDelete = async () => {
 		deleteMessage();
 		const messages = await getList();
-		setMessages(messages)
+		setMessages(messages);
+		setIsUpdated(false)
 	}
  
 	return (

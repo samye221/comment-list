@@ -16,6 +16,7 @@ const Message = (props) => {
 
 	const handleCheckboxChange = (event) => {
 		const isPrivate = event.target.checked;
+		console.log('isPrivate', isPrivate)
 		setValues({...values, isPrivate: isPrivate});
 	}
 
@@ -31,6 +32,7 @@ const Message = (props) => {
 			</div>
 			<div className="commentBlock">
 				<TextField
+					rows="20"
 					id="standard-multiline-flexible"
 					label="Write your message"
 					multiline
