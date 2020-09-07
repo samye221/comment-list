@@ -24,6 +24,5 @@ export const updateList = async() => {
 
 //deletes created message from the localStorage
 export const deleteMessage = () => {
-	console.log('delete')
 	localStorage.clear()
 } 

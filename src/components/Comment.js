@@ -26,15 +26,15 @@ const Message = (props) => {
 
 	return (
 		<div className="container">
-			<div className="topButton">
-				<Button className="btn" variant='contained' color='primary' onClick={() => props.history.push({pathname: '/'})}>BACK TO LIST</Button>
+			<div className="topButton btn">
+				<Button variant='contained' color='primary' onClick={() => props.history.push({pathname: '/'})}>BACK TO LIST</Button>
 			</div>
 			<div className="commentBlock">
 				<TextField
 					id="standard-multiline-flexible"
 					label="Write your message"
 					multiline
-					rowsMax={5}
+					color="primary"
 					value={values.message}
 					name='comment'
 					variant="outlined"

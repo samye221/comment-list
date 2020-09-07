@@ -4,6 +4,7 @@
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
+    background-color: ghostwhite;
 }
 
 .topButton {
@@ -27,5 +28,5 @@
     flex-direction: column;
     margin-top: 20%;
     padding: 5%;
-    background-color: ghostwhite;
+    
 }

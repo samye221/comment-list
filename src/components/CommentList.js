@@ -30,18 +30,17 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const MessageList = (props) => {
+const MessageList = ({location, history}) => {
   const classes = useStyles();
 	const [messages, setMessages] = useState([]);
 	const [filter, setFilter] = useState('isPublic');
-	let isUpdated = props.location.otherProps && props.location.otherProps.isUpdated;
+	const [isUpdated, setIsUpdated] = useState(location.otherProps && location.otherProps.isUpdated)
 
 	useEffect(() => {
 		const getData = async() => {
 			// calls getList or UpdateList conditionnally according to the 'isUpdated' prop set through react-router in the Comment component
 			if (isUpdated) {
 				const messages = await updateList();
-				console.log('MESSAGE_UPDATED', messages);
 				if (messages && messages.length) {
 					if (filter === 'isPrivate') {
 						const filteredMessages = messages.filter(message => message.isPrivate === true);
@@ -58,7 +57,6 @@ const MessageList = (props) => {
 
 			if (!isUpdated) {
 				const messages = await getList();
-				console.log('MESSAGE', messages)
 				if (messages && messages.length) {
 					if (filter === 'isPrivate') {
 						const filteredMessages = messages.filter(message => message.isPrivate === true);
@@ -80,10 +78,10 @@ const MessageList = (props) => {
 
 	const toggleFilter = (filter) => {
 		setFilter(filter);
-		isUpdated = false;
+		setIsUpdated(false);
 	}
 
-	const redirect = () => props.history.push({pathname: '/newComment'})
+	const redirect = () => history.push({pathname: '/newComment'})
 
 	// calls the delete function and calls the original static fake-data 
 	const handleDelete = async () => {
@@ -115,10 +113,14 @@ const MessageList = (props) => {
 								</div>
 								
 							</ListItem>
-							<Divider variant="inset" component="li" />
 						</div>
 						
 					))}
+					{(!messages || messages.length < 1) && (
+						<div>
+							No data
+						</div>
+					)}
 				</List>
 			</div>
 			
@@ -126,14 +128,18 @@ const MessageList = (props) => {
 				<Button onClick={() => redirect()} variant="contained" color="primary">
 					WRITE A MESSAGE
 				</Button>
-				<LightTooltip title="Delete new message">
-  				<IconButton aria-label="delete" className="icon" onClick={()=> handleDelete()}>
-    				<DeleteIcon color="secondary" />
+				{isUpdated && (
+					<LightTooltip title="Delete new message">
+  					<IconButton aria-label="delete" className="icon" onClick={()=> handleDelete()}>
+    					<DeleteIcon color="secondary" />
   					</IconButton>
-				</LightTooltip>
+					</LightTooltip>
+				)}
 			</div>
 		</div>
 	)
 } 
+
+MessageList.displayName = "MessageList";
 
 export default MessageList;
