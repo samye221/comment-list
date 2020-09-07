@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.message {
+    padding: 15px;
+}
+
+.privacy {
+    font-weight: 700;
+}
+
+.messageList {
+    margin: 5%;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    margin: 20px;
+}
+
+.icon {
+    margin-left: 5% !important;
+}

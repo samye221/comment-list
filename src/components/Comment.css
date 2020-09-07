@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+}
+
+.topButton {
+    width: 100%;
+    display: flex;
+    justify-self: center;
+    margin: 10px;
+}
+
+.btn {
+    margin-left: 10px !important;
+}
+
+.bottomButton {
+    margin-top: 5% !important;
+}
+
+.commentBlock {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    padding: 5%;
+    background-color: ghostwhite;
+}
